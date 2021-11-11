@@ -20,17 +20,14 @@ def func3():
         n = int(input("Introdu o valoare => "))
         return n
     except ValueError:
-        print("Valoare nu poate fi un numar intreg!")
-        return 0
+        return "Valoare nu poate fi un numar intreg!"
 
 
-def main():
+def main() -> None:
     print(func1(1, 5, -3, 'abc', [15, 56, 'cad']))
     print(func1())
     print(func1(2, 4, 'abc', pram_1=2))
-
     print(func2(5))
-
     print(func3())
 
 
