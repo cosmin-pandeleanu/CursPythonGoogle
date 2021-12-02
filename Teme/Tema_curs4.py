@@ -6,7 +6,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 import time
 
-header_flag = True
 s = Service(ChromeDriverManager().install())
 browser = webdriver.Chrome(service=s)
 header = []
@@ -37,5 +36,5 @@ for i in range(13, 20): #parcurgerea linkurilor din data de 13 ianuarie pana pe 
     dictionary[header[int(4)]].append("")
 
 df = pd.DataFrame(dictionary, columns=header)
-df.to_csv("DateMAI.csv", columns=header)
+df.to_csv("DateMAI.csv", columns=header,  encoding="utf-16")
 time.sleep(10)
