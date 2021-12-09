@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.urls import reverse
+from django.views.generic import CreateView, UpdateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from aplicatie1.models import Location
+
 
 # Create your views here.
 # CreateView => adaugare date in DB
@@ -6,13 +10,9 @@ from django.shortcuts import render
 # DeleteView => stergere date din DB
 # IndexView  => indormare cu privire la formular
 # ListView   => informatii de tip lista din DB
-from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, ListView
-
-from aplicatie1.models import Location
 
 
-class CreateLocationView(CreateView):
+class CreateLocationView(LoginRequiredMixin, CreateView):
     model = Location
     # fields = '__all__'
     fields = ['city', 'country']
@@ -21,7 +21,8 @@ class CreateLocationView(CreateView):
     def get_success_url(self):
         return reverse('aplicatie1:listare')
 
-class UpdateLocationView(UpdateView):
+
+class UpdateLocationView(LoginRequiredMixin, UpdateView):
     model = Location
     # fields = '__all__'
     fields = ['city', 'country']
@@ -30,6 +31,7 @@ class UpdateLocationView(UpdateView):
     def get_success_url(self):
         return reverse('aplicatie1:listare')
 
-class ListLocationView(ListView):
+
+class ListLocationView(LoginRequiredMixin, ListView):
     model = Location
     template_name = 'aplicatie1/location_index.html'
