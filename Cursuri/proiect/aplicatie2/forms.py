@@ -40,7 +40,6 @@ class NewAccountForm(forms.ModelForm):
             user_extend_instance = UserExtend.objects.get(id=current_user)
             self.fields['customer'] = ModelChoiceField(queryset=Companies.objects.filter(id=user_extend_instance.customer.id))
 
-
     def clean(self):
         cleaned_data = self.cleaned_data
         email_value = cleaned_data.get('email')
@@ -51,5 +50,3 @@ class NewAccountForm(forms.ModelForm):
             if UserExtend.objects.filter(email=email_value).exclude(id=self.pk).exists():
                 self._errors['email'] = self.error_class(["Emaiul deja exista, te rugam sa alegi altul"])
         return cleaned_data
-
-

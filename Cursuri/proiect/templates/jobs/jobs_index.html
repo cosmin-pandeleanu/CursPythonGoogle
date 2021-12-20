@@ -26,28 +26,32 @@
             background-color: grey;
         }
         table > thead > tr > th {
-            width: 20%;
+            width: 18%;
         }
     </style>
     <br><br><br>
-    <a class="add_button" href="{% url 'aplicatie1:adaugare' %}">Add new location</a>
+<a class="add_button" href="{% url 'jobs:adaugare' %}">Add new job</a>
     <table>
         <thead>
         <tr>
             <th>Index</th>
-            <th>City</th>
-            <th>Country</th>
+            <th>Name</th>
+            <th>Url</th>
+            <th>Description</th>
+            <th>Customer</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        {% for item in location_list %}
+        {% for item in job_list %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ item.city|upper }}</td>
-                <td>{{ item.country }}</td>
-                <td><a class="update_button" href="{% url 'aplicatie1:modificare' item.id %}">Update location</a>
-                <a class="remove_button" href="{% url 'aplicatie1:remove' item.id %}">Remove location</a>
+                <td>{{ item.name }}</td>
+                <td>{{ item.url }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.customer }}</td>
+                <td><a class="update_button" href="{% url 'jobs:modificare' item.id %}">Update job</a>
+                <a class="remove_button" href="{% url 'jobs:remove' item.id %}">Remove job</a>
                 </td>
             </tr>
         {% endfor %}
