@@ -1,2 +1,2 @@
 # CursPythonGoogle
-Work repository for Google Digital Workshop
+Work repository for Google Digital Workshop.
